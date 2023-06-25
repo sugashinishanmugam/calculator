@@ -41,7 +41,7 @@ const Calculator = ({ dateValue }) => {
   showDates();
 
   return (
-    <div className="my-4 flex flex-col mx-[25%] max-w-[75%]">
+    <div data-testid="Calendar" className="my-4 flex flex-col mx-[25%] max-w-[75%]">
       <div className="font-bold">{`${MonthInWords} ${year}`}</div>
       <table>
         <thead>
@@ -61,7 +61,7 @@ const Calculator = ({ dateValue }) => {
                     return (<tr key={key}>
                     {Object.keys(item).map((x, i )=> {
                         return (
-                            <td className={item[x] == day ? "bg-indigo-700 rounded-3xl" : ""} key={key + i}>{item[x]}</td>
+                            <td data-testid={item[x] == day ? 'highlighted_date' : ''} className={item[x] == day ? "bg-indigo-700 rounded-3xl" : ""} key={key + i}>{item[x]}</td>
                         );
                     })}
                     </tr>);

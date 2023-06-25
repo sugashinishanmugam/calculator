@@ -32,9 +32,9 @@ describe("Test for InputForm", () => {
         expect(button).toBeDisabled()
       });
 
-      test('showCalendar state is changes after user submits the input', () => {
-        const setShowCalendar = jest.fn();
-        const {getByText, getByRole, state} = render(<InputForm />);
+      //below text case is yet to be completed......so skipping it for now using xtest
+      xtest('showCalendar state is changed to true after user submits the input', () => {
+        const {getByText, getByRole} = render(<InputForm />);
         const input =  getByRole('date-input');
         const show = getByText('Show')
         fireEvent.change(input, {target: {value: '2020-05-23'}});
@@ -42,17 +42,9 @@ describe("Test for InputForm", () => {
         // const handleClick = jest.spyOn(React, "useState");
         // handleClick.mockImplementation(showCalendar => [showCalendar, setShowCalendar]);
         // const calendar = screen.getByDisplayValue("May");
-        console.log("state", input, show);
+        // console.log("state", input, show);
         // expect(setShowCalendar).toHaveBeenCalledWith(true);
         // expect(setShowCalendar).toBeCalled();
-        // expect(state('input')).toBe(true);
+        // expect(state('showCalendar')).toBe(true);
       });
-
-      test('sample', () => {
-        const {getByText} = render(<InputForm />);
-        // console.log("dataaa", getByText('Show'));
-      });
-
-      
-
 });

@@ -1,12 +1,10 @@
-import { render, screen, } from '@testing-library/react';
+import { render, screen, prettyDOM} from '@testing-library/react';
 import App from './App';
 
 describe("Test for App", () => {
-  xit('renders input for getting user input', () => {
+  it('renders input for getting user input', () => {
     const renderedData = render(<App />);
-    // console.log("rrrrrrrrrrr", renderedData);
-    // const input =  
-    // expect(input).toBeInTheDocument();
+    expect(renderedData.container).toBeInTheDocument();
   });
 });
 
