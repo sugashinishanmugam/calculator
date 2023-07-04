@@ -19,6 +19,14 @@ const InputForm = () => {
         }
     }
 
+    const handleChange = (data) => {
+        setDate(prevDate => {
+            const year = prevDate.split("-")[0];
+            const month = prevDate.split("-")[1];
+            return`${year}-${month}-${data}`;
+        });
+    }
+
     return ( 
         <>
             <div className="text-xl font-bold px-4 py-6">Hello Folks, Welcome to Calendar App. If you want to know which day of the Month a specific Date falls on. Please enter the date in input field</div>
@@ -27,7 +35,7 @@ const InputForm = () => {
                     <button disabled={!enableSubmit} role="date-submit" onClick={dateSubmit} className=" rounded-full border-2 border-indigo-700 bg-blue-700 my-4">Show</button>
                 </div>
                 {
-                    showCalendar && <Calculator dateValue={date}/>
+                    showCalendar && <Calculator dateValue={date} onDateChange={(data) => {handleChange(data)}}/>
                 }   
             
         </>

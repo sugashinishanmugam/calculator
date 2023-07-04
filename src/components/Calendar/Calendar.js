@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Calculator = ({ dateValue }) => {
+const Calculator = ({ dateValue, onDateChange }) => {
   const Months = {
     0: "January",
     1: "Febraury",
@@ -18,6 +18,7 @@ const Calculator = ({ dateValue }) => {
   const year = dateValue.split("-")[0];
   const month = dateValue.split("-")[1];
   const day = dateValue.split("-")[2];
+  let dateTOBehighlighted = day;
   const MonthInWords = Months[new Date(dateValue).getMonth()]; // JAN - 0; FEB - 1 .... DEC - 11
   const TotalDaysInMonth = new Date(year, month, 0).getDate();
   const DayInWhichMonthStarts = new Date(`${year}-${month}-01`).getDay(); // MON - 0; TUE - 1 .... SUN - 1
@@ -61,7 +62,7 @@ const Calculator = ({ dateValue }) => {
                     return (<tr key={key}>
                     {Object.keys(item).map((x, i )=> {
                         return (
-                            <td data-testid={item[x] == day ? 'highlighted_date' : ''} className={item[x] == day ? "bg-indigo-700 rounded-3xl" : ""} key={key + i}>{item[x]}</td>
+                            <td data-testid={item[x] == day ? 'highlighted_date' : ''} className={item[x] == dateTOBehighlighted ? "bg-indigo-700 rounded-3xl" : ""} key={key + i} onClick={() => onDateChange(item[x])}>{item[x]}</td>
                         );
                     })}
                     </tr>);
